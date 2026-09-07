@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home.jsx'
+
+import Home from './components/home/Home.jsx'
 import ParkSelect from './pages/ParkSelect.jsx'
 import RangerLogin from './pages/RangerLogin.jsx'
 import Dashboard from './pages/Dashboard.jsx'

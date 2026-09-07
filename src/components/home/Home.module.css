@@ -1,0 +1,83 @@
+.home {
+    width: 100%;
+    height: 100vh;
+  
+    position: relative;
+    overflow: hidden;
+  
+    background: #0b0f17;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero {
+    width: 1440px;
+    height: 1024px;
+  
+    position: relative;
+  
+    flex-shrink: 0;
+  
+    transform-origin: center center;
+  }
+  
+  
+  /* =========================================
+     TEMPORARY NAVIGATION BUTTONS
+     ========================================= */
+  
+  .navigationButton {
+    position: fixed;
+  
+    top: 50%;
+    transform: translateY(-50%);
+  
+    width: 48px;
+    height: 48px;
+  
+    border-radius: 50%;
+  
+    background: #10b981;
+  
+    color: #f8fafc;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 38px;
+    line-height: 1;
+  
+    cursor: pointer;
+  
+    z-index: 100;
+  
+    box-shadow: 0 16px 20px rgba(16, 185, 129, 0.2);
+  
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+  
+  .navigationButton:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.08);
+  }
+  
+  .navigationButton:active:not(:disabled) {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  .navigationButton:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+  
+  .previousButton {
+    left: 24px;
+  }
+  
+  .nextButton {
+    right: 24px;
+  }
