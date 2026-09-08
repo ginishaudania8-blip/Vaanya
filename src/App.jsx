@@ -1,11 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/home/Home.jsx";
+import ParkSelect from "./components/parkSelection/ParkSelect.jsx";
+import RangerLogin from "./pages/RangerLogin.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
-import Home from './components/home/Home.jsx'
-import ParkSelect from './pages/ParkSelect.jsx'
-import RangerLogin from './pages/RangerLogin.jsx'
-import Dashboard from './pages/Dashboard.jsx'
-
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -15,7 +14,5 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
-
-export default App
