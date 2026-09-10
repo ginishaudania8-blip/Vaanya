@@ -12,10 +12,10 @@ export default function Hero1() {
       <img src={lioncutout} alt="Lion Cutout" className={styles.cutoutImage} />
 
       <motion.div 
-        className={styles.thoughtGroupLion}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.35 }}
+        className={`${styles.thoughtGroup} ${styles.thoughtLion}`}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
       >
         <span className={styles.dotSmall} />
         <span className={styles.dotLarge} />
