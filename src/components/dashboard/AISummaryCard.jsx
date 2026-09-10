@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import styles from './AISummaryCard.module.css';
-import { getAISummary } from '../../services/gemini';
+import { getAISummary } from '../../services/geminiSummary';
 import { getLatestReading, getFloodStatus } from '../../services/floodData';
 import { usePoachingReports } from '../../hooks/usePoachingReports';
 
