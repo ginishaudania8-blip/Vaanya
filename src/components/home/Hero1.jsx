@@ -12,17 +12,13 @@ export default function Hero1() {
       <img src={lioncutout} alt="Lion Cutout" className={styles.cutoutImage} />
 
       <motion.div 
-        className={styles.thoughtGroupLion}
-        initial={{ opacity: 0, scale: 0.9, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        className={`${styles.thoughtGroup} ${styles.thoughtLion}`}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
       >
-        <div className={styles.dotTrail}>
-          <span className={styles.dotSmall} />
-          <span className={styles.dotMedium} />
-          <span className={styles.dotLarge} />
-        </div>
-
+        <span className={styles.dotSmall} />
+        <span className={styles.dotLarge} />
         <div className={styles.thoughtBox}>
           This is the only home he knows
         </div>

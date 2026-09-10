@@ -75,7 +75,7 @@ export default function Home() {
 
         {/* Top-Right Login Pill Button */}
         {activeTab === 'PARK_SELECT' && (
-          <button 
+          <button
             className={styles.loginPillButton}
             onClick={() => navigate('/login')}
           >
@@ -117,11 +117,11 @@ export default function Home() {
               <img src={carouselNextIcon} alt="" />
             </button>
 
-            <button 
+            <button
               className={styles.actionButton}
               onClick={() => setActiveTab('PARK_SELECT')}
             >
-              <span>LET’S BEGIN</span>
+              <span>LET'S BEGIN</span>
               <img src={letsBeginArrow} alt="" className={styles.actionIcon} />
             </button>
           </>
@@ -144,7 +144,13 @@ export default function Home() {
         {/* Park Selection View */}
         {activeTab === 'PARK_SELECT' && (
           <div className={styles.animatedSlideWrapper}>
-            <ParkSelect onSelectPark={(park) => console.log('Selected Park:', park)} />
+            <ParkSelect
+              onSelectPark={(park) => {
+                if (park.id === 'kaziranga') {
+                  navigate('/dashboard');
+                }
+              }}
+            />
           </div>
         )}
       </div>

@@ -1,0 +1,99 @@
+.dashboard {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #0a0e17;
+  }
+  
+  .sidebar {
+    width: 227px;
+    flex-shrink: 0;
+    background-color: #0d1220;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .topRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .backBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .logo {
+    color: #10b981;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .filterInput {
+    background-color: #1a2130;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+  }
+  
+  .layerList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  
+  .layerItem {
+    color: #cbd5e1;
+    font-size: 14px;
+    padding: 8px 4px;
+    cursor: pointer;
+  }
+  
+  .layerItem.active {
+    color: #10b981;
+    font-weight: 600;
+  }
+  
+  .aiSummaryButton {
+    background-color: #10b981;
+    color: #0a0e17;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  .mapArea {
+    flex: 1;
+    position: relative;
+  }
+  
+  .loginBtn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+    background-color: #10b981;
+    color: #0a0e17;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
