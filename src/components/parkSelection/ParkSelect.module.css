@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem; /* Leaves space for top navbar */
+  padding-top: 5rem;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -13,7 +13,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the title and search bar */
+  align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
 }
@@ -27,7 +27,6 @@
   text-align: center;
 }
 
-/* Centered Search Bar */
 .searchContainer {
   position: relative;
   width: 100%;
@@ -58,7 +57,6 @@
   cursor: pointer;
 }
 
-/* Enabled Scroll Area */
 .gridScrollArea {
   flex: 1;
   width: 100%;

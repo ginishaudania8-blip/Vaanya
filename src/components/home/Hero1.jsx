@@ -13,16 +13,12 @@ export default function Hero1() {
 
       <motion.div 
         className={styles.thoughtGroupLion}
-        initial={{ opacity: 0, scale: 0.9, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.35 }}
       >
-        <div className={styles.dotTrail}>
-          <span className={styles.dotSmall} />
-          <span className={styles.dotMedium} />
-          <span className={styles.dotLarge} />
-        </div>
-
+        <span className={styles.dotSmall} />
+        <span className={styles.dotLarge} />
         <div className={styles.thoughtBox}>
           This is the only home he knows
         </div>
