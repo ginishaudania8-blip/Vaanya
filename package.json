@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "firebase": "^12.18.0",
+    "firebase-admin": "^14.4.0",
     "framer-motion": "^13.2.0",
     "leaflet": "^1.9.4",
     "react": "^19.2.8",
