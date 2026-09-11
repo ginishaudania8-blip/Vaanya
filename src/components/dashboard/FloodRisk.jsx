@@ -9,12 +9,12 @@ const STATUS_COLORS = {
 };
 
 // Approximate low-lying/riverbank zones inside Kaziranga known to be flood-prone.
-// Hardcoded for demo purposes — not a verified flood-extent survey.
+// Added individual severity keys for dynamic per-zone coloring.
 const FLOOD_PRONE_ZONES = [
-  { name: 'Agoratoli Range (riverbank)', lat: 26.665, lng: 93.42 },
-  { name: 'Kohora Range (near river)', lat: 26.58, lng: 93.36 },
-  { name: 'Bagori Range (riverbank)', lat: 26.62, lng: 93.28 },
-  { name: 'Western boundary (riverbank)', lat: 26.60, lng: 93.10 },
+  { name: 'Agoratoli Range (riverbank)', lat: 26.665, lng: 93.42, severity: 'danger' },
+  { name: 'Kohora Range (near river)', lat: 26.58, lng: 93.36, severity: 'warning' },
+  { name: 'Bagori Range (riverbank)', lat: 26.62, lng: 93.28, severity: 'danger' },
+  { name: 'Western boundary (riverbank)', lat: 26.60, lng: 93.10, severity: 'warning' },
 ];
 
 function extractOuterRings(geometry) {
@@ -34,7 +34,7 @@ const FloodRisk = () => {
 
   return (
     <>
-      {/* Faint full-park outline stays, just very light now — orientation only */}
+      {/* Faint full-park outline stays for orientation */}
       {rings.map((positions, i) => (
         <Polygon
           key={i}
@@ -43,27 +43,32 @@ const FloodRisk = () => {
         />
       ))}
 
-      {/* Real signal: only show risk zones when status isn't normal */}
+      {/* Show risk zones with dynamic per-zone colors */}
       {status !== 'normal' &&
-        FLOOD_PRONE_ZONES.map((zone) => (
-          <Circle
-            key={zone.name}
-            center={[zone.lat, zone.lng]}
-            radius={1500}
-            pathOptions={{
-              color: STATUS_COLORS[status],
-              fillColor: STATUS_COLORS[status],
-              fillOpacity: 0.5,
-              weight: 2,
-            }}
-          >
-            <Tooltip sticky>
-              {zone.name}<br />
-              {latest.level}m — {status.toUpperCase()}<br />
-              Warning: {WARNING_LEVEL}m · Danger: {DANGER_LEVEL}m
-            </Tooltip>
-          </Circle>
-        ))}
+        FLOOD_PRONE_ZONES.map((zone) => {
+          // Dynamic color selection per zone based on severity
+          const zoneColor = STATUS_COLORS[zone.severity] || STATUS_COLORS[status];
+
+          return (
+            <Circle
+              key={zone.name}
+              center={[zone.lat, zone.lng]}
+              radius={1500}
+              pathOptions={{
+                color: zoneColor,
+                fillColor: zoneColor,
+                fillOpacity: 0.6,
+                weight: 2,
+              }}
+            >
+              <Tooltip sticky>
+                {zone.name}<br />
+                {latest.level}m — {zone.severity.toUpperCase()}<br />
+                Warning: {WARNING_LEVEL}m · Danger: {DANGER_LEVEL}m
+              </Tooltip>
+            </Circle>
+          );
+        })}
     </>
   );
 };

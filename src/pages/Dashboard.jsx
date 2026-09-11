@@ -4,6 +4,7 @@ import styles from './Dashboard.module.css';
 import MapView from '../components/dashboard/MapView';
 import AISummaryCard from '../components/dashboard/AISummaryCard';
 import ReportStats from '../components/dashboard/ReportStats';
+import MapLegend from '../components/dashboard/Maplegend';
 import { useAuth } from '../hooks/useAuth';
 
 const Dashboard = () => {
@@ -90,11 +91,6 @@ const Dashboard = () => {
             )}
           </nav>
 
-          {/* ReportStats wrapped to fix dark invisible text */}
-          <div className={styles.statsWrapper}>
-            <ReportStats />
-          </div>
-
           <button className={styles.aiSummaryButton} onClick={() => setShowAISummary(!showAISummary)}>
             AI SUMMARY
           </button>
@@ -105,8 +101,16 @@ const Dashboard = () => {
         <button className={styles.loginBtn} onClick={handleAuthAction}>
           {role ? 'LOGOUT' : 'LOGIN'}
         </button>
+
         <MapView activeLayers={activeLayers} userRole={role} />
+
+        {/* Floating Map Legend overlaid on bottom right when flood risk is enabled */}
+        {activeLayers.floodRisk && <MapLegend />}
+
         {showAISummary && <AISummaryCard onClose={() => setShowAISummary(false)} />}
+
+        {/* Floating poaching report stats, bottom-left — only when the layer is on and logged in */}
+        {activeLayers.poachingReports && role && <ReportStats />}
       </main>
     </div>
   );
