@@ -1,98 +1,174 @@
-.parkSelectContainer {
-  width: 100%;
-  height: 100%;
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #080b11;
+  color: #ffffff;
+  padding: 1.25rem 4rem 0rem 4rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 5rem;
-  box-sizing: border-box;
   overflow: hidden;
 }
 
-.headerSection {
-  width: 100%;
+/* Fixed Header & Search Section */
+.stickyHeader {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+/* Navbar Placement */
+.header {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.navPill {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 1.25rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+}
+
+.navLink {
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #ffffff;
+}
+
+.loginBtn {
+  position: absolute;
+  right: 0;
+  background-color: #10b981;
+  color: #ffffff;
+  border: none;
+  padding: 0.45rem 1.3rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+/* Center Layout Heading - Compacted */
+.heading {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  color: #f1f5f9;
+}
+
+/* Search Bar Box - Compacted */
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
   margin-bottom: 1.5rem;
 }
 
-.title {
-  font-family: 'Georgia', serif;
-  font-size: 2.2rem;
-  font-weight: 400;
-  color: #ffffff;
-  margin-bottom: 1.25rem;
-  text-align: center;
-}
-
-.searchContainer {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  opacity: 0.5;
 }
 
 .searchInput {
   width: 100%;
-  padding: 0.65rem 4.5rem 0.65rem 1.25rem;
-  background: rgba(22, 27, 34, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
+  padding: 0.5rem 1rem 0.5rem 2.4rem;
   color: #ffffff;
-  font-size: 0.85rem;
-  outline: none;
-}
-
-.filterBtn {
-  position: absolute;
-  right: 0.75rem;
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
   font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.gridScrollArea {
-  flex: 1;
-  width: 100%;
-  overflow-y: auto;
-  padding: 0 2rem 2.5rem 2rem;
-  display: flex;
-  justify-content: center;
+  outline: none;
   box-sizing: border-box;
 }
 
-.gridScrollArea::-webkit-scrollbar {
+.searchInput::placeholder {
+  color: #64748b;
+}
+
+/* Scrollable Container */
+.scrollContent {
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+  padding-bottom: 3rem;
+  padding-right: 0.5rem;
+}
+
+/* Custom In-Window Scrollbar */
+.scrollContent::-webkit-scrollbar {
   width: 6px;
 }
 
-.gridScrollArea::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+.scrollContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollContent::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
 }
 
-.parksGrid {
-  width: 100%;
-  max-width: 1080px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  height: max-content;
+.scrollContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
-@media (max-width: 900px) {
-  .parksGrid {
+/* Cards Grid Layout */
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .parksGrid {
+@media (max-width: 640px) {
+  .grid {
     grid-template-columns: 1fr;
   }
 }

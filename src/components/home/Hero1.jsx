@@ -13,12 +13,10 @@ export default function Hero1() {
 
       <motion.div 
         className={`${styles.thoughtGroup} ${styles.thoughtLion}`}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.3 }}
       >
-        <span className={styles.dotSmall} />
-        <span className={styles.dotLarge} />
         <div className={styles.thoughtBox}>
           This is the only home he knows
         </div>

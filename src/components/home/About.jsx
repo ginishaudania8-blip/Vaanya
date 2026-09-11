@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Navbar from '../Navbar';
 import styles from './about.module.css';
 
 import aboutBg from '../../assets/aboutcontactbg.png';
@@ -7,6 +8,11 @@ import aboutBg from '../../assets/aboutcontactbg.png';
 export default function About() {
   return (
     <div className={styles.aboutWrapper}>
+      {/* Top Header Navigation */}
+      <header style={{ position: 'absolute', top: '24px', left: 0, right: 0, display: 'flex', justifyContent: 'center', zIndex: 50 }}>
+        <Navbar />
+      </header>
+
       {/* Background Layer */}
       <img src={aboutBg} alt="Forest Background" className={styles.bgImage} />
 

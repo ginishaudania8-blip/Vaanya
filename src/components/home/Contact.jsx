@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Navbar from '../Navbar';
 import styles from './contact.module.css';
 
 import contactBg from '../../assets/aboutcontactbg.png';
@@ -7,6 +8,11 @@ import contactBg from '../../assets/aboutcontactbg.png';
 export default function Contact() {
   return (
     <div className={styles.contactWrapper}>
+      {/* Top Header Navigation */}
+      <header style={{ position: 'absolute', top: '24px', left: 0, right: 0, display: 'flex', justifyContent: 'center', zIndex: 50 }}>
+        <Navbar />
+      </header>
+
       {/* Background Image Layer */}
       <img src={contactBg} alt="Forest Background" className={styles.bgImage} />
 

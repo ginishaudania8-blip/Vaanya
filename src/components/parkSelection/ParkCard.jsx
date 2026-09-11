@@ -1,25 +1,26 @@
 import React from 'react';
 import styles from './ParkCard.module.css';
 
-export default function ParkCard({ name, location, image, onClick, isAvailable = false }) {
-  const handleClick = () => {
-    if (isAvailable && onClick) {
-      onClick();
-    }
-  };
-
+export default function ParkCard({ name, state, image, isAvailable, onClick }) {
   return (
-    <div
-      className={`${styles.card} ${!isAvailable ? styles.comingSoon : ''}`}
-      onClick={handleClick}
+    <div 
+      className={`${styles.card} ${!isAvailable ? styles.disabledCard : ''}`}
+      onClick={isAvailable ? onClick : undefined}
     >
-      <div className={styles.textWrapper}>
-        <h3 className={styles.parkName}>{name}</h3>
-        <p className={styles.parkLocation}>{location}</p>
+      <div className={styles.header}>
+        <h3 className={styles.title}>{name}</h3>
+        <span className={styles.subtitle}>{state}</span>
       </div>
-      <div className={styles.imageWrapper}>
-        <img src={image} alt={name} className={styles.parkImage} />
-        {!isAvailable && <div className={styles.badge}>Coming soon</div>}
+
+      <div className={styles.imageContainer}>
+        <img src={image} alt={name} className={styles.image} />
+
+        {/* Overlay Badge for non-Kaziranga Parks */}
+        {!isAvailable && (
+          <div className={styles.comingSoonOverlay}>
+            <span className={styles.comingSoonBadge}>COMING SOON</span>
+          </div>
+        )}
       </div>
     </div>
   );
