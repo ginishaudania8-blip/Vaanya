@@ -3,20 +3,30 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 import MapView from '../components/dashboard/MapView';
 import AISummaryCard from '../components/dashboard/AISummaryCard';
+import ReportStats from '../components/dashboard/ReportStats';
 import { useAuth } from '../hooks/useAuth';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { role } = useAuth();
+  const { role, logout } = useAuth();
 
   const [activeLayers, setActiveLayers] = useState({
     floodRisk: true,
     eszBoundary: false,
+    poachingReports: false,
   });
   const [showAISummary, setShowAISummary] = useState(false);
 
   const toggleLayer = (layerName) => {
     setActiveLayers((prev) => ({ ...prev, [layerName]: !prev[layerName] }));
+  };
+
+  const handleAuthAction = () => {
+    if (role) {
+      logout();
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -66,16 +76,34 @@ const Dashboard = () => {
               <span>Flood risk</span>
             </div>
 
-            <button className={styles.aiSummaryButton} onClick={() => setShowAISummary(!showAISummary)}>
-              AI SUMMARY
-            </button>
+            {/* Poaching Reports layer (visible only when logged in) */}
+            {role && (
+              <div
+                className={`${styles.layerItem} ${activeLayers.poachingReports ? styles.active : ''}`}
+                onClick={() => toggleLayer('poachingReports')}
+              >
+                <span className={`${styles.checkbox} ${activeLayers.poachingReports ? styles.checked : ''}`}>
+                  {activeLayers.poachingReports && '✓'}
+                </span>
+                <span>Poaching Reports</span>
+              </div>
+            )}
           </nav>
+
+          {/* ReportStats wrapped to fix dark invisible text */}
+          <div className={styles.statsWrapper}>
+            <ReportStats />
+          </div>
+
+          <button className={styles.aiSummaryButton} onClick={() => setShowAISummary(!showAISummary)}>
+            AI SUMMARY
+          </button>
         </div>
       </aside>
 
       <main className={styles.mapArea}>
-        <button className={styles.loginBtn} onClick={() => navigate('/login')}>
-          {role ? role.toUpperCase() : 'LOGIN'}
+        <button className={styles.loginBtn} onClick={handleAuthAction}>
+          {role ? 'LOGOUT' : 'LOGIN'}
         </button>
         <MapView activeLayers={activeLayers} userRole={role} />
         {showAISummary && <AISummaryCard onClose={() => setShowAISummary(false)} />}

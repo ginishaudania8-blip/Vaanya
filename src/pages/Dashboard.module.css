@@ -129,7 +129,27 @@
   border-color: #10b981;
   font-weight: bold;
 }
+/* ReportStats High Visibility Wrapper */
+.statsWrapper {
+  color: #ffffff;
+  margin: 8px 0;
+}
 
+.statsWrapper h1, 
+.statsWrapper h2, 
+.statsWrapper h3, 
+.statsWrapper h4, 
+.statsWrapper p, 
+.statsWrapper span, 
+.statsWrapper div,
+.statsWrapper li {
+  color: #ffffff !important;
+}
+
+.statsWrapper small, 
+.statsWrapper label {
+  color: #94a3b8 !important;
+}
 /* Update ONLY this selector in Dashboard.module.css */
 .aiSummaryButton {
   width: 100%;
