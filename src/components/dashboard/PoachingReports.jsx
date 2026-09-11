@@ -1,26 +1,20 @@
-import { Marker, Popup, CircleMarker } from 'react-leaflet';
-import { usePoachingReports, groupReportsByZone } from '../../hooks/usePoachingReports';
+import { Marker, Popup } from 'react-leaflet';
+import { usePoachingReports } from '../../hooks/usePoachingReports';
 
 const PoachingReports = ({ precise }) => {
-  const reports = usePoachingReports();
+  const data = usePoachingReports(precise);
 
   if (!precise) {
-    const clustered = groupReportsByZone(reports);
-    return clustered.map((zone) => (
-      <CircleMarker
-        key={zone.name}
-        center={zone.centerCoords}
-        radius={18}
-        pathOptions={{ color: '#f97316', fillColor: '#f97316', fillOpacity: 0.5 }}
-      >
-        <Popup>{zone.count} report(s) in {zone.name} this week</Popup>
-      </CircleMarker>
-    ));
+    if (!data) return null;
+    // Aggregate view: no exact pins, just a summary popup/label rendered elsewhere (e.g. a stats badge).
+    // This component intentionally renders nothing on the map for public users —
+    // real location data isn't available to them by design.
+    return null;
   }
 
-  return reports.map((report) => (
-    <Marker key={report.id} position={[report.lat, report.lng]}>
-      <Popup>{report.description || 'Poaching report'} — {report.date}</Popup>
+  return data.map((report) => (
+    <Marker key={report.id} position={[report.location.lat, report.location.lng]}>
+      <Popup>{report.description || 'Poaching report'} — {report.category}</Popup>
     </Marker>
   ));
 };

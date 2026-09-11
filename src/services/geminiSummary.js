@@ -2,15 +2,21 @@ const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent`;
 
 function buildPrompt({ floodStatus, floodLevel, eszStatus, corridorFact, reportCount }) {
-  return `You are helping a forest ranger at Kaziranga National Park.
-Write one short, plain-English paragraph (2-3 sentences max) summarizing the current situation.
+  return `You are briefing a forest ranger at Kaziranga National Park. Based on the data below, write a short situational briefing.
 
 Flood status: ${floodStatus} (water level: ${floodLevel}m)
 ESZ boundary context: ${eszStatus}
 Known corridor fact: ${corridorFact}
 Recent incident reports: ${reportCount} reports logged in the last 7 days
 
-Be direct and actionable, like a briefing — not generic or vague.`;
+Format your response EXACTLY like this, no extra text before or after:
+
+HEADLINE: [one punchy sentence capturing the single most important thing right now]
+- [bullet 1: flood/water situation, specific and actionable]
+- [bullet 2: incident/poaching activity, specific and actionable]
+- [bullet 3: wildlife movement or corridor risk, tied to the corridor fact and flood status]
+
+Be direct and specific — use the actual numbers given. Do not be vague or generic.`;
 }
 
 export async function getAISummary(inputData) {
@@ -21,9 +27,7 @@ export async function getAISummary(inputData) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [
-          { parts: [{ text: prompt }] }
-        ]
+        contents: [{ parts: [{ text: prompt }] }]
       })
     });
 
@@ -41,6 +45,6 @@ export async function getAISummary(inputData) {
     return summaryText;
   } catch (error) {
     console.error('Failed to get AI summary:', error);
-    return 'Unable to generate summary right now. Please try refreshing.';
+    return 'HEADLINE: Unable to generate summary right now.\n- Please try refreshing.';
   }
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 
@@ -29,5 +29,16 @@ export function useAuth() {
     return () => unsubscribe();
   }, []);
 
-  return { user, role, loading };
+  async function login(email, password) {
+    if (!auth) throw new Error('Firebase not configured');
+    const result = await signInWithEmailAndPassword(auth, email, password);
+    return result.user;
+  }
+
+  async function logout() {
+    if (!auth) return;
+    await signOut(auth);
+  }
+
+  return { user, role, loading, login, logout };
 }
