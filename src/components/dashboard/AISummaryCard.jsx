@@ -8,9 +8,12 @@ const CORRIDOR_FACT = 'Elephant and rhino corridor connects Kaziranga to the Kar
 
 const AISummaryCard = ({ onClose }) => {
   const [summary, setSummary] = useState('HEADLINE: Loading...\n');
-  const aggregate = usePoachingReports(false); // aggregate mode: { total, byCategory } or null
+  const [loading, setLoading] = useState(false);
+  const aggregate = usePoachingReports(false);
 
   const refreshSummary = useCallback(async () => {
+    if (loading) return;
+    setLoading(true);
     setSummary('HEADLINE: Loading...\n');
     const latest = getLatestReading();
     const text = await getAISummary({
@@ -21,11 +24,13 @@ const AISummaryCard = ({ onClose }) => {
       reportCount: aggregate?.total ?? 0,
     });
     setSummary(text);
+    setLoading(false);
   }, [aggregate]);
 
   useEffect(() => {
     refreshSummary();
-  }, [refreshSummary]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [headline, ...bullets] = summary.split('\n').filter(Boolean);
 
@@ -41,7 +46,9 @@ const AISummaryCard = ({ onClose }) => {
           <li key={i}>{b.replace(/^-\s*/, '')}</li>
         ))}
       </ul>
-      <button className={styles.refreshBtn} onClick={refreshSummary}>Refresh Summary</button>
+      <button className={styles.refreshBtn} onClick={refreshSummary} disabled={loading}>
+        {loading ? 'Loading...' : 'Refresh Summary'}
+      </button>
     </div>
   );
 };
