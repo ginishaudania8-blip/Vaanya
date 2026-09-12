@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import styles from './home.module.css';
+import styles from './Home.module.css';
 
 import lionbg from '../../assets/lionbg.png';
 import lioncutout from '../../assets/lioncutout.png';

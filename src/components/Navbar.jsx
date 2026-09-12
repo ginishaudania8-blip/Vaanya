@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import styles from './home/home.module.css';
+import styles from './home/Home.module.css';
 
 export default function Navbar() {
   const navigate = useNavigate();

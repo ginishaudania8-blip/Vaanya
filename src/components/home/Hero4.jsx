@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './home.module.css';
+import styles from './Home.module.css';
 
 import deerbg from '../../assets/deerbg.png';
 import deercutout from '../../assets/deercutout.png';

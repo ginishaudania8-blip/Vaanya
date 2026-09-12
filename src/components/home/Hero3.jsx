@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './home.module.css';
+import styles from './Home.module.css';
 
 import elephantbg from '../../assets/elephantbg.png';
 import elephantcutout from '../../assets/elephantcutout.png';

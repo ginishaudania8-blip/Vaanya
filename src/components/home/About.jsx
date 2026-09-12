@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../Navbar.jsx';
-import styles from './about.module.css';
+import styles from './About.module.css';
 
 import aboutBg from '../../assets/aboutcontactbg.png';
 

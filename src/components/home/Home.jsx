@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../Navbar";
-import styles from './home.module.css';
+import styles from './Home.module.css';
 
 import Hero1 from './Hero1';
 import Hero2 from './Hero2';
