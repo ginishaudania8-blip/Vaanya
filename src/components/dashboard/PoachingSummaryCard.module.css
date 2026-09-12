@@ -1,0 +1,35 @@
+.card {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    width: fit-content;
+    max-width: 260px;
+    background-color: rgba(224, 75, 75, 0.15);
+    border: 1px solid #e04b4b;
+    border-radius: 12px;
+    padding: 14px 18px;
+    z-index: 1000;
+    color: #ffffff;
+  }
+  
+  .header {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #ffffff;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    color: #f2d5d5;
+  }
+  
+  .list strong {
+    color: #ffffff;
+  }

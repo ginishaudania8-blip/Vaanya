@@ -1,153 +1,90 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import Navbar from "../Navbar";
 import styles from './home.module.css';
 
-// Carousel Slides
 import Hero1 from './Hero1';
 import Hero2 from './Hero2';
 import Hero3 from './Hero3';
 import Hero4 from './Hero4';
 
-// Views
-import About from './About';
-import Contact from './Contact';
-import ParkSelect from '../parkSelection/ParkSelect';
+const slides = [<Hero1 key="1" />, <Hero2 key="2" />, <Hero3 key="3" />, <Hero4 key="4" />];
 
-import carouselNextIcon from '../../assets/icon-carousel-next.svg';
-import letsBeginArrow from '../../assets/letsbeginarrow.svg';
-
-const heroSlides = [<Hero1 key="h1" />, <Hero2 key="h2" />, <Hero3 key="h3" />, <Hero4 key="h4" />];
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? '100%' : '-100%',
+    zIndex: 1,
+  }),
+  center: {
+    x: 0,
+    zIndex: 1,
+    transition: { duration: 0.45, ease: [0.25, 1, 0.5, 1] },
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? '100%' : '-100%',
+    zIndex: 0,
+    transition: { duration: 0.45, ease: [0.25, 1, 0.5, 1] },
+  }),
+};
 
 export default function Home() {
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('HOME');
   const [[page, direction], setPage] = useState([0, 0]);
+  const navigate = useNavigate();
+
+  const current = Math.abs(page % slides.length);
 
   const paginate = (newDirection) => {
-    setPage(([prevPage]) => {
-      let next = prevPage + newDirection;
-      if (next < 0) next = heroSlides.length - 1;
-      if (next >= heroSlides.length) next = 0;
-      return [next, newDirection];
-    });
-  };
-
-  const slideVariants = {
-    enter: (dir) => ({
-      x: dir > 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir) => ({
-      x: dir < 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
+    setPage([page + newDirection, newDirection]);
   };
 
   return (
-    <main className={styles.homeWrapper}>
+    <div className={styles.homeWrapper}>
       <div className={styles.frameContainer}>
-        {/* Floating Top Navigation Header */}
-        <nav className={styles.navBar}>
-          <button
-            className={activeTab === 'HOME' ? styles.activeNavLink : styles.navLink}
-            onClick={() => setActiveTab('HOME')}
+        {/* Shared Active-State Navbar */}
+        <header style={{ position: 'absolute', top: '24px', left: 0, right: 0, display: 'flex', justifyContent: 'center', zIndex: 10 }}>
+          <Navbar />
+        </header>
+
+        {/* Carousel Arrows */}
+        <button 
+          className={`${styles.navArrow} ${styles.prevArrow}`} 
+          onClick={() => paginate(-1)}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+
+        <button 
+          className={`${styles.navArrow} ${styles.nextArrow}`} 
+          onClick={() => paginate(1)}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+
+        {/* Slide Content */}
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={page}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className={styles.animatedSlideWrapper}
           >
-            HOME
-          </button>
-          <button
-            className={activeTab === 'ABOUT' ? styles.activeNavLink : styles.navLink}
-            onClick={() => setActiveTab('ABOUT')}
-          >
-            ABOUT
-          </button>
-          <button
-            className={activeTab === 'CONTACT' ? styles.activeNavLink : styles.navLink}
-            onClick={() => setActiveTab('CONTACT')}
-          >
-            CONTACT
-          </button>
-        </nav>
+            {slides[current]}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Top-Right Login Pill Button */}
-        {activeTab === 'PARK_SELECT' && (
-          <button 
-            className={styles.loginPillButton}
-            onClick={() => navigate('/login')}
-          >
-            LOGIN
-          </button>
-        )}
-
-        {/* Home View Carousel */}
-        {activeTab === 'HOME' && (
-          <>
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={page}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
-                className={styles.animatedSlideWrapper}
-              >
-                {heroSlides[page]}
-              </motion.div>
-            </AnimatePresence>
-
-            <button
-              className={`${styles.navArrow} ${styles.prevArrow}`}
-              onClick={() => paginate(-1)}
-              aria-label="Previous Slide"
-            >
-              <img src={carouselNextIcon} alt="" className={styles.rotateArrow} />
-            </button>
-
-            <button
-              className={`${styles.navArrow} ${styles.nextArrow}`}
-              onClick={() => paginate(1)}
-              aria-label="Next Slide"
-            >
-              <img src={carouselNextIcon} alt="" />
-            </button>
-
-            <button 
-              className={styles.actionButton}
-              onClick={() => setActiveTab('PARK_SELECT')}
-            >
-              <span>LET’S BEGIN</span>
-              <img src={letsBeginArrow} alt="" className={styles.actionIcon} />
-            </button>
-          </>
-        )}
-
-        {/* About View */}
-        {activeTab === 'ABOUT' && (
-          <div className={styles.animatedSlideWrapper}>
-            <About />
-          </div>
-        )}
-
-        {/* Contact View */}
-        {activeTab === 'CONTACT' && (
-          <div className={styles.animatedSlideWrapper}>
-            <Contact />
-          </div>
-        )}
-
-        {/* Park Selection View */}
-        {activeTab === 'PARK_SELECT' && (
-          <div className={styles.animatedSlideWrapper}>
-            <ParkSelect onSelectPark={(park) => console.log('Selected Park:', park)} />
-          </div>
-        )}
+        {/* Primary CTA */}
+        <button className={styles.actionButton} onClick={() => navigate('/park-selection')}>
+          LET'S BEGIN &rarr;
+        </button>
       </div>
-    </main>
+    </div>
   );
 }

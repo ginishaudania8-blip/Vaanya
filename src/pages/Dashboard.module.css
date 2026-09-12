@@ -1,0 +1,203 @@
+.dashboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #080b11;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background-color: #090d16;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.logo {
+  color: #10b981;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* Static Filter Display Pill */
+.filterPill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 8px 14px;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  user-select: none;
+}
+
+.filterText {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.filterIcon {
+  color: #64748b;
+  pointer-events: none;
+}
+
+/* Layer Section */
+.layerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionHeader {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.layerList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.layerItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #94a3b8;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.layerItem:hover {
+  color: #ffffff;
+}
+
+.layerItem.active {
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* Custom Checkbox */
+.checkbox {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: #080b11;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.checkbox.checked {
+  background-color: #10b981;
+  border-color: #10b981;
+  font-weight: bold;
+}
+/* ReportStats High Visibility Wrapper */
+.statsWrapper {
+  color: #ffffff;
+  margin: 8px 0;
+}
+
+.statsWrapper h1, 
+.statsWrapper h2, 
+.statsWrapper h3, 
+.statsWrapper h4, 
+.statsWrapper p, 
+.statsWrapper span, 
+.statsWrapper div,
+.statsWrapper li {
+  color: #ffffff !important;
+}
+
+.statsWrapper small, 
+.statsWrapper label {
+  color: #94a3b8 !important;
+}
+/* Update ONLY this selector in Dashboard.module.css */
+.aiSummaryButton {
+  width: 100%;
+  background-color: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  transition: background-color 0.2s;
+  margin-top: 6px;
+}
+
+.aiSummaryButton:hover {
+  background-color: #059669;
+}
+
+
+.mapArea {
+  flex: 1;
+  position: relative;
+  height: 100vh;
+}
+
+/* Login Button with Black Text */
+.loginBtn {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 1000;
+  background-color: #10b981;
+  color: #0a0e17;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 24px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  transition: background-color 0.2s;
+}
+
+.loginBtn:hover {
+  background-color: #059669;
+}
