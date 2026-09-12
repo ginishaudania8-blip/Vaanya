@@ -1,26 +1,34 @@
-import { Circle, Tooltip } from 'react-leaflet';
-
-// Approximate Kaziranga center — swap for a real computed centroid of the
-// boundary GeoJSON once available, this is close enough for a demo ring.
-const PARK_CENTER = [26.58, 93.17];
+import { GeoJSON, Tooltip } from 'react-leaflet';
+import * as turf from '@turf/turf';
+import kazirangaGeoJSON from '../../data/kaziranga-boundary.json';
 
 const ESZOverlay = () => {
+  if (!kazirangaGeoJSON?.features?.length) {
+    return null;
+  }
+
+  // Merge all boundary features into one shape to buffer as a whole
+  const parkShape = kazirangaGeoJSON.features.length > 1
+    ? turf.combine(kazirangaGeoJSON)
+    : kazirangaGeoJSON.features[0];
+
+  const buffer10km = turf.buffer(parkShape, 10, { units: 'kilometers' });
+  const buffer1km = turf.buffer(parkShape, 1, { units: 'kilometers' });
+
   return (
     <>
-      <Circle
-        center={PARK_CENTER}
-        radius={10000}
-        pathOptions={{ color: '#3b82f6', fillOpacity: 0.03, weight: 2, dashArray: '6 6' }}
+      <GeoJSON
+        data={buffer10km}
+        style={{ color: '#3b82f6', fillOpacity: 0.03, weight: 2, dashArray: '6 6' }}
       >
         <Tooltip sticky>Current ESZ boundary — 10km buffer</Tooltip>
-      </Circle>
-      <Circle
-        center={PARK_CENTER}
-        radius={1000}
-        pathOptions={{ color: '#ef4444', fillOpacity: 0.08, weight: 2 }}
+      </GeoJSON>
+      <GeoJSON
+        data={buffer1km}
+        style={{ color: '#ef4444', fillOpacity: 0.08, weight: 2 }}
       >
         <Tooltip sticky>Proposed ESZ boundary — 1km buffer (Aug 2026)</Tooltip>
-      </Circle>
+      </GeoJSON>
     </>
   );
 };

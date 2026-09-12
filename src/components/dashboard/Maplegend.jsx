@@ -22,6 +22,9 @@ const styles = {
     fontWeight: '600',
     color: '#ffffff',
   },
+  section: {
+    marginBottom: '12px',
+  },
   legendItem: {
     display: 'flex',
     alignItems: 'center',
@@ -39,22 +42,45 @@ const styles = {
   },
 };
 
-const MapLegend = () => {
-  const legendItems = [
-    { label: 'Danger Zone', color: '#e04b4b' },
-    { label: 'Warning Zone', color: '#f2c14e' },
-    { label: 'Normal / Safe', color: '#2ecc8f' },
-  ];
+const floodLegendItems = [
+  { label: 'Danger Zone', color: '#e04b4b' },
+  { label: 'Warning Zone', color: '#f2c14e' },
+  { label: 'Normal / Safe', color: '#2ecc8f' },
+];
+
+const eszLegendItems = [
+  { label: 'Current ESZ — 10km buffer', color: '#3b82f6' },
+  { label: 'Proposed ESZ — 1km buffer', color: '#ef4444' },
+];
+
+const MapLegend = ({ showFlood = false, showEsz = false }) => {
+  if (!showFlood && !showEsz) return null;
 
   return (
     <div style={styles.legendContainer}>
-      <h4 style={styles.title}>Flood Risk Levels</h4>
-      {legendItems.map((item) => (
-        <div key={item.label} style={styles.legendItem}>
-          <span style={{ ...styles.badge, backgroundColor: item.color }} />
-          <span style={styles.label}>{item.label}</span>
+      {showFlood && (
+        <div style={styles.section}>
+          <h4 style={styles.title}>Flood Risk Levels</h4>
+          {floodLegendItems.map((item) => (
+            <div key={item.label} style={styles.legendItem}>
+              <span style={{ ...styles.badge, backgroundColor: item.color }} />
+              <span style={styles.label}>{item.label}</span>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
+
+      {showEsz && (
+        <div style={styles.section}>
+          <h4 style={styles.title}>ESZ Boundary</h4>
+          {eszLegendItems.map((item) => (
+            <div key={item.label} style={styles.legendItem}>
+              <span style={{ ...styles.badge, backgroundColor: item.color }} />
+              <span style={styles.label}>{item.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

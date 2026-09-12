@@ -36,3 +36,27 @@ button {
   background: none;
   cursor: pointer;
 }
+/* Leaflet tooltip overrides — match Vaanya's dark theme */
+.leaflet-tooltip {
+  background-color: rgba(9, 13, 22, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Arrow color for tooltips pointing up/down/left/right */
+.leaflet-tooltip-top:before {
+  border-top-color: rgba(9, 13, 22, 0.95) !important;
+}
+.leaflet-tooltip-bottom:before {
+  border-bottom-color: rgba(9, 13, 22, 0.95) !important;
+}
+.leaflet-tooltip-left:before {
+  border-left-color: rgba(9, 13, 22, 0.95) !important;
+}
+.leaflet-tooltip-right:before {
+  border-right-color: rgba(9, 13, 22, 0.95) !important;
+}

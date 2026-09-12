@@ -10,7 +10,7 @@ export function usePoachingReports(precise) {
     if (!db) return;
 
     if (precise) {
-      const q = query(collection(db, 'reports'), where('category', '==', 'poaching'));
+      const q = query(collection(db, 'reports'));
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setReports(data);

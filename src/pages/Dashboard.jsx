@@ -105,8 +105,7 @@ const Dashboard = () => {
         <MapView activeLayers={activeLayers} userRole={role} />
 
         {/* Floating Map Legend overlaid on bottom right when flood risk is enabled */}
-        {activeLayers.floodRisk && <MapLegend />}
-
+        <MapLegend showFlood={activeLayers.floodRisk} showEsz={activeLayers.eszBoundary} />
         {showAISummary && <AISummaryCard onClose={() => setShowAISummary(false)} />}
 
         {/* Floating poaching report stats, bottom-left — only when the layer is on and logged in */}

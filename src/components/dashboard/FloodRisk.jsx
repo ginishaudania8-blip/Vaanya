@@ -4,8 +4,8 @@ import kazirangaGeoJSON from '../../data/kaziranga-boundary.json';
 
 const STATUS_COLORS = {
   normal: '#2ecc8f',
-  warning: '#f2c14e',
-  danger: '#e04b4b',
+  warning: '#F7BD03',
+  danger: '#FF0000 ',
 };
 
 // Approximate low-lying/riverbank zones inside Kaziranga known to be flood-prone.
@@ -63,7 +63,7 @@ const FloodRisk = () => {
             >
               <Tooltip sticky>
                 {zone.name}<br />
-                {latest.level}m — {zone.severity.toUpperCase()}<br />
+                {latest.level}m — <span style={{ color: zoneColor, fontWeight: 700 }}>{zone.severity.toUpperCase()}</span><br />
                 Warning: {WARNING_LEVEL}m · Danger: {DANGER_LEVEL}m
               </Tooltip>
             </Circle>

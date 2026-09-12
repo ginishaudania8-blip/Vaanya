@@ -3,7 +3,7 @@
     bottom: 24px;
     left: 24px;
     width: 360px;
-    background-color: rgba(13, 18, 32, 0.95);
+    background-color: rgba(18, 22, 31, 0.95);
     border: 1px solid #10b981;
     border-radius: 12px;
     padding: 16px 18px;
@@ -16,8 +16,8 @@
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
-    font-size: 13px;
-    color: #f2c14e;
+    font-size: 17px;
+    color: #f90101;
     margin-bottom: 8px;
   }
   

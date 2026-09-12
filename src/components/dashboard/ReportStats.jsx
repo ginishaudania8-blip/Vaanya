@@ -7,7 +7,7 @@ const ReportStats = () => {
 
   useEffect(() => {
     if (!db) return;
-    const q = query(collection(db, 'reports'), where('category', '==', 'poaching'));
+    const q = query(collection(db, 'reports'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setReports(snapshot.docs.map((doc) => doc.data()));
     });
@@ -24,11 +24,11 @@ const ReportStats = () => {
   return (
     <div style={{
       position: 'absolute',
-      bottom: '220px',
-      left: '24px',
+      bottom: '370px',
+      right: '30px',
       zIndex: 1000,
-      backgroundColor: 'rgba(245, 26, 26, 0.33)',
-      border: '1px solidrgb(236, 53, 53)',
+      backgroundColor: 'rgba(110, 204, 112, 0.69)',
+      border: '10px solidrgb(236, 53, 53)',
       borderRadius: '12px',
       padding: '14px 18px',
       color: '#000000',
