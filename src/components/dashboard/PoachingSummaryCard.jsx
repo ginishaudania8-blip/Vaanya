@@ -1,5 +1,5 @@
 import styles from './PoachingSummaryCard.module.css';
-import { usePoachingReports } from '../../hooks/usePoachingReports';
+import { usePoachingReports } from '../../hooks/usePoachingReports.js';
 
 const CATEGORY_LABELS = {
   poaching: 'Poaching',

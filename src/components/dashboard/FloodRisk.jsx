@@ -1,5 +1,5 @@
 import { Polygon, Circle, Tooltip } from 'react-leaflet';
-import { getLatestReading, getFloodStatus, WARNING_LEVEL, DANGER_LEVEL } from '../../services/floodData';
+import { getLatestReading, getFloodStatus, WARNING_LEVEL, DANGER_LEVEL } from '../../services/floodData.js';
 import kazirangaGeoJSON from '../../data/kaziranga-boundary.json';
 
 const STATUS_COLORS = {

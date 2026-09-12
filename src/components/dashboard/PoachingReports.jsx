@@ -1,5 +1,5 @@
 import { Marker, Popup } from 'react-leaflet';
-import { usePoachingReports } from '../../hooks/usePoachingReports';
+import { usePoachingReports } from '../../hooks/usePoachingReports.js';
 
 const PoachingReports = ({ precise }) => {
   const data = usePoachingReports(precise);

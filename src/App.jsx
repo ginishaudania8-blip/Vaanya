@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/home/Home';
-import RangerLogin from './pages/RangerLogin';
-import Dashboard from './pages/Dashboard';
-import ParkSelect from './components/parkSelection/ParkSelect';
-import About from './components/home/About';
-import Contact from './components/home/Contact';
+import Home from './components/home/Home.jsx';
+import RangerLogin from './pages/RangerLogin.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import ParkSelect from './components/parkSelection/ParkSelect.jsx';
+import About from './components/home/About.jsx';
+import Contact from './components/home/Contact.jsx';
 
 function App() {
   return (

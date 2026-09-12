@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '../Navbar';
+import Navbar from '../Navbar.jsx';
 import styles from './contact.module.css';
 
 import contactBg from '../../assets/aboutcontactbg.png';

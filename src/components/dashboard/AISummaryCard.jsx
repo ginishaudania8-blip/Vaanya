@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import styles from './AISummaryCard.module.css';
-import { getAISummary } from '../../services/geminiSummary';
-import { getLatestReading, getFloodStatus } from '../../services/floodData';
-import { usePoachingReports } from '../../hooks/usePoachingReports';
+import { getAISummary } from '../../services/geminiSummary.js';
+import { getLatestReading, getFloodStatus } from '../../services/floodData.js';
+import { usePoachingReports } from '../../hooks/usePoachingReports.js';
 
 const CORRIDOR_FACT = 'Elephant and rhino corridor connects Kaziranga to the Karbi Anglong hills to the south, used seasonally — especially during floods when animals move to higher ground.';
 

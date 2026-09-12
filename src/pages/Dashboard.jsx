@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Dashboard.module.css';
-import MapView from '../components/dashboard/MapView';
-import AISummaryCard from '../components/dashboard/AISummaryCard';
-import ReportStats from '../components/dashboard/ReportStats';
-import MapLegend from '../components/dashboard/Maplegend';
-import { useAuth } from '../hooks/useAuth';
+import MapView from '../components/dashboard/MapView.jsx';
+import AISummaryCard from '../components/dashboard/AISummaryCard.jsx';
+import ReportStats from '../components/dashboard/ReportStats.jsx';
+import MapLegend from '../components/dashboard/Maplegend.jsx';
+import { useAuth } from '../hooks/useAuth.js';
 
 const Dashboard = () => {
   const navigate = useNavigate();

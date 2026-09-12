@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
-import { useAuth } from '../hooks/useAuth';
+import { auth } from '../firebase.js';
+import { useAuth } from '../hooks/useAuth.js';
 import styles from './RangerLogin.module.css';
 import loginBg from '../assets/loginbg.png';
 
