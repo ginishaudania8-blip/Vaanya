@@ -8,15 +8,12 @@ import contactBg from '../../assets/aboutcontactbg.png';
 export default function Contact() {
   return (
     <div className={styles.contactWrapper}>
-      {/* Top Header Navigation */}
-      <header style={{ position: 'absolute', top: '24px', left: 0, right: 0, display: 'flex', justifyContent: 'center', zIndex: 50 }}>
+      <header style={{ position: 'absolute', top: '24px', left: 0, right: 0, display: 'flex', justifyContent: 'center', zIndex: 50}}>
         <Navbar />
       </header>
 
-      {/* Background Image Layer */}
       <img src={contactBg} alt="Forest Background" className={styles.bgImage} />
 
-      {/* Glass Content Card */}
       <motion.div 
         className={styles.contactCard}
         initial={{ opacity: 0, scale: 0.97, y: 10 }}
@@ -26,17 +23,21 @@ export default function Contact() {
         <h2 className={styles.heading}>Get in Touch</h2>
 
         <p className={styles.subtext}>
-          Have something to report, a question, or want to collaborate? We'd love to hear from you.
+          Have a wildlife concern to report, or interested in partnering with Vaanya as an NGO, researcher, or park authority? We'd love to hear from you.
         </p>
 
-        <a href="mailto:demo@vaanya-app.dev" className={styles.emailLink}>
-          demo@vaanya-app.dev
+        <a href="mailto:ginishaudania8@gmail.com" className={styles.emailLink}>
+          ginishaudania8@gmail.com
         </a>
 
         <hr className={styles.divider} />
 
         <p className={styles.footerText}>
-          Built by Aayushi & Ginisha for AnimalHack 2026
+          For emergencies or immediate threats to wildlife, please contact your local forest department directly. Vaanya is a monitoring platform and does not replace official emergency services.
+        </p>
+
+        <p className={styles.footerText}>
+          Built by Aayushi & Ginisha for AnimalHack 2026 — starting with Kaziranga National Park.
         </p>
       </motion.div>
     </div>
